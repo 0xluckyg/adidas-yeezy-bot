@@ -17,15 +17,15 @@ import time
 MODEL = 'S82241'
 FIRSTNAME = 'SCOTT'
 LASTNAME = 'CHO'
-ADDRESS = 'CUSTOM ADDRESS'
-APTNUM = 'APT NUM'
-ZIPCODE = 'ZIP CODE'
-CITY = 'CITY'
-CARDNUM = 'CARD NUM'
-CARDNAME = 'NAME ON CARD'
-PHONENUM = 'PHONE NUMBER'
-EMAIL = 'EMAIL'
-SECURITYCODE = 'SECURITY CODE ON CARD'
+ADDRESS = 'Some Address'
+APTNUM = 'Some Apt Number'
+ZIPCODE = 'Some Zip Number'
+CITY = 'Some City'
+CARDNUM = '1234567890'
+CARDNAME = 'Name on Card'
+PHONENUM = '123456789'
+EMAIL = 'email@email.com'
+SECURITYCODE = '123'
 
 
 baseURL = 'http://www.adidas.com/us/' + MODEL + '.html?'
@@ -34,7 +34,8 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleW
 driver = webdriver.Chrome()
 driver.get(baseURL)
 
-sizeSelect = driver.find_element_by_xpath('//*[@id="buy-block"]/div[1]/div[5]/div[3]/form/div[2]/div[2]')
+sizeSelect = WebDriverWait(driver, 1000000).until(
+EC.element_to_be_clickable((By.XPATH, '//*[@id="buy-block"]/div[1]/div[5]/div[3]/form/div[2]/div[2]')));
 sizeSelect.click()
 size = driver.find_element_by_xpath('//*[@id="buy-block"]/div[1]/div[5]/div[3]/form/div[2]/div[2]/div/div/div/div[2]/div/ul/li[7]')
 size.click()
